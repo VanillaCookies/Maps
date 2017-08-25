@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<map proto="1.4.3">
+<name>Jedi's Pain</name>
+<version>1.0.0</version>
+<objective>Gain 1000 points</objective>
+<authors>
+    <author uuid="abcba220-a88d-4f2b-a160-a8ab5ff9942c"/> <!-- Moro -->
+	<author uuid="28c9fc96-f9b2-47ac-96ea-5c4c05dddefb"/> <!-- Joosh -->
+	<author uuid="db4c8e3b-3d2b-494d-a64a-26b44a10277c"/> <!-- Adam -->
+</authors>
+<contributors>
+    <contributor uuid="0d6cbe3e-8fb2-4eb9-a751-0d2e76556c6a" contribution="XML Author"/> <!-- Desafortunada -->
+</contributors>
+<teams>
+    <team id="red" color="dark red" max="5">Red</team>
+    <team id="blue" color="blue" max="5">Blue</team>
+</teams>
+<time>12m</time>
+<respawn delay="5s" auto="true"/>
+<kits>
+    <kit id="spawn">
+        <item slot="0" material="stone sword"/>
+        <item slot="1" material="bow"/>
+        <item slot="28" amount="16" material="arrow"/>
+        <item slot="8" amount="16" material="cooked beef"/>
+        <potion duration="5" amplifier="4">heal</potion>
+        <potion duration="5" amplifier="4">damage resistance</potion>
+        <potion duration="oo" amplifier="1">night vision</potion>
+        <leggings enchantment="protection projectile:1" unbreakable="true">iron leggings</leggings>
+    </kit>
+    <kit id="blue-kit" parents="spawn">
+        <helmet color="0015B6" unbreakable="true">leather helmet</helmet>
+        <chestplate color="0015B6" unbreakable="true">leather chestplate</chestplate>
+        <boots color="0015B6" unbreakable="true">leather boots</boots>
+    </kit>
+    <kit id="red-kit" parents="spawn">
+        <helmet color="EE1010" unbreakable="true">leather helmet</helmet>
+        <chestplate color="EE1010" unbreakable="true">leather chestplate</chestplate>
+        <boots color="EE1010" unbreakable="true">leather boots</boots>
+    </kit>
+    <kit id="obs">
+        <potion duration="oo" amplifier="1">night vision</potion>
+    </kit>
+</kits>
+<filters>
+	<team id="only-blue">blue</team>
+	<team id="only-red">red</team>
+</filters>
+<regions>
+    <rectangle id="everything" min="-oo,-oo" max="oo,oo"/>
+    <cylinder id="blue-spawn" base="0.5,8,38.5" radius="12.5" height="25"/>
+    <cylinder id="red-spawn" base="0.5,8,-37.5" radius="12.5" height="25"/>
+    <apply enter="only-blue" message="You may not enter the enemy team's spawn!" region="blue-spawn"/>
+    <apply enter="only-red" message="You may not enter the enemy team's spawn!" region="red-spawn"/>
+    <apply block="never" region="everything"/>
+</regions>
+<spawns>
+    <spawn team="blue" kit="blue-kit" yaw="180">
+        <cylinder base="0.5,114,54.5" radius="1" height="1"/>
+    </spawn>
+    <spawn team="red" kit="red-kit" yaw="0">
+        <cylinder base="0.5,114,-53.5" radius="1" height="1"/>
+    </spawn>
+    <default kit="obs" yaw="90">
+        <block id="obs">0.5,48,0.5</block>
+    </default>
+</spawns>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+</toolrepair>
+<itemremove>
+    <item>arrow</item>
+    <item>golden apple</item>
+    <item>cooked beef</item>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>iron leggings</item>
+    <item>leather boots</item>
+</itemremove>
+<killreward>
+    <item amount="1">golden apple</item>
+	<item amount="4" material="arrow"/>
+</killreward>
+<timelock>on</timelock>
+<control-points incremental="true" neutral-state="true" show-progress="true" scaled-time="true">
+    <control-point name="Point A" capture-time="5s" points="3">
+        <capture-region>
+        	<cylinder base="-22.5,11,0.5" radius="2.5" height="2"/>
+        </capture-region>
+        <progress-display-region>
+            <cylinder base="-22.5,11,0.5" radius="5" height="100"/>
+        </progress-display-region>
+    </control-point>
+    <control-point name="Point B" capture-time="8s" points="3">
+        <capture-region>
+        	<cylinder base="0.5,14,0.5" radius="2.5" height="10"/>
+        </capture-region>
+        <progress-display-region>
+            <cylinder base="0.5,14,0.5" radius="5" height="100"/>
+        </progress-display-region>
+    </control-point>
+    <control-point name="Point C" capture-time="5s" points="2">
+        <capture-region>
+        	<cylinder base="23.5,11,0.5" radius="2.5" height="10"/>
+        </capture-region>
+        <progress-display-region>
+            <cylinder base="23.5,11,0.5" radius="5" height="100"/>
+        </progress-display-region>
+    </control-point>
+</control-points>
+<score>
+    <limit>1000</limit>
+    <king/>
+</score>
+</map>
