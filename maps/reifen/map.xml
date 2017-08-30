@@ -54,6 +54,10 @@
         <item slot="8" amount="1" material="golden apple"/>
         <item slot="28" amount="16" material="arrow"/>
         <leggings material="iron leggings"/>
+        <potion duration="4" amplifier="5">slow</potion>
+        <potion duration="4" amplifier="-5">jump</potion>
+        <potion duration="4" amplifier="5">blindness</potion>
+        <potion duration="4" amplifier="5">heal</potion>
     </kit>
     <kit id="green-kit" parents="spawn">
         <helmet unbreakable="true" locked="true" color="667F33" material="leather helmet"/>
