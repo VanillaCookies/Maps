@@ -1,102 +1,101 @@
-<?xml version="1.0"?>
-<map proto="1.4.2">
-<name>Reifen</name>
-<version>1.0.5</version>
-<objective>Get the enemy's flag and take it back to the base!</objective>
-<authors>
-    <author uuid="5eed208d-de58-4022-9ba7-6ccb5ea7e92a" contribution="Map planning, XML"/>
-    <author uuid="f926e3b1-ce9c-4269-a5e8-e339d5056480" contribution="Map planning, Building"/>
-</authors>
-<score>
-    <limit>5</limit>
-</score>
-<time result="objectives">20m</time>
-<teams>
-    <team id="green-team" color="dark green" max="5">Green</team>
-    <team id="gray-team" color="dark gray" max="5">Gray</team>
-</teams>
-<spawns>
-    <spawn team="green-team" kit="green-kit">
-        <region yaw="-180">
-            <block>0.5,13.3,48.5</block>
-        </region>
-    </spawn>
-    <spawn team="gray-team" kit="gray-kit">
-        <region yaw="0">
-            <block>0.5,13.3,-47.5</block>
-        </region>
-    </spawn>
-    <default>
-        <region yaw="-90">
-            <block>0.5,24.3,0.5</block>
-        </region>
-    </default>
-</spawns>
-<kits>
-    <kit id="reset" force="true">
-        <potion duration="1" amplifier="0">health boost</potion>
-        <potion duration="0" amplifier="10">slowness</potion>
-    </kit>
-    <kit id="flag-kit">
-        <potion duration="oo" amplifier="-2" ambient="true">health boost</potion>
-        <potion duration="oo">slowness</potion>
-    </kit>
-    <kit id="spawn">
-        <item slot="0" unbreakable="true" material="stone sword"/>
-        <item slot="1" unbreakable="true" material="bow"/>
-        <item slot="8" amount="1" material="golden apple"/>
-        <item slot="28" amount="16" material="arrow"/>
-        <leggings material="iron leggings"/>
-    </kit>
-    <kit id="green-kit" parents="spawn">
-        <head name="BrettOgden" slot="slot.armor.head" uuid="1987fc00-a5b2-43b5-b94b-e3c0d25776e9"><skin>eyJ0aW1lc3RhbXAiOjE1MDM3NzQwNTE3ODYsInByb2ZpbGVJZCI6IjE5ODdmYzAwYTViMjQzYjViOTRiZTNjMGQyNTc3NmU5IiwicHJvZmlsZU5hbWUiOiJCcmV0dE9nZGVuIiwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzIzZjhjYmMzZjU5MDhmYTVjN2Y0ZTI4MzhiNGVmNDlhYzc2MWQyZDAxNjZkZjM3ZmI0OTZkYWM4NWU2MmEifX19</skin>
-</head>
-        <chestplate unbreakable="true" locked="true" color="667F33" material="leather chestplate"/>
-        <boots unbreakable="true" locked="true" color="667F33" material="leather boots"/>
-    </kit>
-    <kit id="gray-kit" parents="spawn">
-        <head name="Cratain" slot="slot.armor.head" uuid="cbdc7b1d-7a07-465b-bebb-4f20bfb8ebd8"><skin>eyJ0aW1lc3RhbXAiOjE1MDM3NzM4ODQxMzcsInByb2ZpbGVJZCI6ImNiZGM3YjFkN2EwNzQ2NWJiZWJiNGYyMGJmYjhlYmQ4IiwicHJvZmlsZU5hbWUiOiJDcmF0YWluIiwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzgxMzczZTFmZDQ2YTU2MTgzMDNiZGMxY2NiN2VkOTRiOGY2NGZiMWVjZGFmYTc1ZjQ3ZTg3OTlkNjQxMTMzMTEifX19</skin>
-</head>
-        <chestplate unbreakable="true" locked="true" color="999999" material="leather chestplate"/>
-        <boots unbreakable="true" locked="true" color="999999" material="leather boots"/>
-    </kit>
-</kits>
-<flags flag-proximity-metric="closest player">
-    <flag id="gray-flag" name="Gray Flag" owner="gray-team" pickup-kit="flag-kit" drop-kit="reset">
-        <post id="gray-post" recover-time="10s" respawn-time="5s" pickup-filter="green">0.5,8,-34.5</post>
-    </flag>
-    <flag id="green-flag" name="Green Flag" owner="gray-team" pickup-kit="flag-kit" drop-kit="reset">
-        <post id="green-post" recover-time="10s" respawn-time="5s" pickup-filter="gray">0.5,8,35.5</post>
-    </flag>
-    <net post="gray-post" points="1" region="green-net" capture-filter="green"/>
-    <net post="green-post" points="1" region="gray-net" capture-filter="gray"/>
-</flags>
-<regions>
-    <apply block="never" region="everywhere"/>
-    <rectangle id="green-net" min="2,34" max="-1,37"/>
-    <rectangle id="gray-net" min="2,-36" max="-1,-33"/>
-    <apply enter="gray" message="You may not enter to the enemy's spawn!">
-        <region>
-            <rectangle id="greenSpawn1" min="-11,-36" max="-6,-38"/>
-            <rectangle id="greenSpawn2" min="12,-36" max="7,-38"/>
-        </region>
-    </apply>
-    <apply enter="green" message="You may not enter to the enemy's spawn!">
-        <region>
-            <rectangle id="graySpawn1" min="12,37" max="7,39"/>
-            <rectangle id="graySpawn2" min="-11,37" max="-6,39"/>
-        </region>
-    </apply>
-</regions>
-<itemremove>
-    <item>arrow</item> 
-    <item>iron leggings</item>
-    <item>bow</item>
-    <item>stone sword</item>
-    <item>397:3</item>
-</itemremove>
-<filters>
-    <team id="green">green-team</team>
-    <team id="gray">gray-team</team>
-</filters>
-</map>	
+<map proto="1.4.2">
+<name>Reifen</name>
+<version>1.0.5</version>
+<objective>Get the enemy's flag and take it back to the base!</objective>
+<authors>
+    <author uuid="5eed208d-de58-4022-9ba7-6ccb5ea7e92a" contribution="Map planning, XML"/>
+    <author uuid="f926e3b1-ce9c-4269-a5e8-e339d5056480" contribution="Map planning, Building"/>
+</authors>
+<score>
+    <limit>3</limit>
+    <kills>0</kills>
+    <deaths>0</deaths>
+</score>
+<time>15m</time>
+<teams>
+    <team id="green-team" color="dark green" max="5">Green</team>
+    <team id="gray-team" color="dark gray" max="5">Gray</team>
+</teams>
+<respawn delay="5s" auto="true"/>
+<spawns>
+    <spawn team="green-team" kit="green-kit">
+        <region yaw="-180">
+            <block>0.5,13.3,48.5</block>
+        </region>
+    </spawn>
+    <spawn team="gray-team" kit="gray-kit">
+        <region yaw="0">
+            <block>0.5,13.3,-47.5</block>
+        </region>
+    </spawn>
+    <default>
+        <region yaw="-90">
+            <block>0.5,24.3,0.5</block>
+        </region>
+    </default>
+</spawns>
+<kits>
+    <kit id="reset" force="true">
+        <potion duration="1" amplifier="0">health boost</potion>
+        <potion duration="0" amplifier="10">slowness</potion>
+    </kit>
+    <kit id="flag-kit">
+        <potion duration="oo" amplifier="-2" ambient="true">health boost</potion>
+        <potion duration="oo">slowness</potion>
+    </kit>
+    <kit id="spawn">
+        <item slot="0" unbreakable="true" material="stone sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="8" amount="1" material="golden apple"/>
+        <item slot="28" amount="16" material="arrow"/>
+        <leggings material="iron leggings"/>
+    </kit>
+    <kit id="green-kit" parents="spawn">
+        <helmet unbreakable="true" locked="true" color="667F33" material="leather helmet"/>
+        <chestplate unbreakable="true" locked="true" color="667F33" material="leather chestplate"/>
+        <boots unbreakable="true" locked="true" color="667F33" material="leather boots"/>
+    </kit>
+    <kit id="gray-kit" parents="spawn">
+        <helmet unbreakable="true" locked="true" color="999999" material="leather helmet"/>
+        <chestplate unbreakable="true" locked="true" color="999999" material="leather chestplate"/>
+        <boots unbreakable="true" locked="true" color="999999" material="leather boots"/>
+    </kit>
+</kits>
+<flags flag-proximity-metric="closest player">
+    <flag id="gray-flag" name="Gray Flag" owner="gray-team" pickup-kit="flag-kit" drop-kit="reset">
+        <post id="gray-post" recover-time="10s" respawn-time="7s" pickup-filter="green">0.5,8,-34.5</post>
+    </flag>
+    <flag id="green-flag" name="Green Flag" owner="gray-team" pickup-kit="flag-kit" drop-kit="reset">
+        <post id="green-post" recover-time="10s" respawn-time="7s" pickup-filter="gray">0.5,8,35.5</post>
+    </flag>
+    <net post="gray-post" points="1" region="green-net" capture-filter="green"/>
+    <net post="green-post" points="1" region="gray-net" capture-filter="gray"/>
+</flags>
+<regions>
+    <apply block="never" region="everywhere"/>
+    <rectangle id="green-net" min="2,34" max="-1,37"/>
+    <rectangle id="gray-net" min="2,-36" max="-1,-33"/>
+    <apply enter="gray" message="You may not enter to the enemy's spawn!">
+        <region>
+            <rectangle id="greenSpawn1" min="-11,-36" max="-6,-38"/>
+            <rectangle id="greenSpawn2" min="12,-36" max="7,-38"/>
+        </region>
+    </apply>
+    <apply enter="green" message="You may not enter to the enemy's spawn!">
+        <region>
+            <rectangle id="graySpawn1" min="12,37" max="7,39"/>
+            <rectangle id="graySpawn2" min="-11,37" max="-6,39"/>
+        </region>
+    </apply>
+</regions>
+<itemremove>
+    <item>arrow</item> 
+    <item>iron leggings</item>
+    <item>bow</item>
+    <item>stone sword</item>
+</itemremove>
+<filters>
+    <team id="green">green-team</team>
+    <team id="gray">gray-team</team>
+</filters>
+</map>
