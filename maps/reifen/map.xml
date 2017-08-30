@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Reifen</name>
-<version>1.1.0</version>
+<version>1.0.5</version>
 <objective>Get the enemy's flag and take it back to the base!</objective>
 <authors>
     <author uuid="5eed208d-de58-4022-9ba7-6ccb5ea7e92a" contribution="Map planning, XML"/>
