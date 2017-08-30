@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Reifen</name>
-<version>1.0.5</version>
+<version>1.1.0</version>
 <objective>Get the enemy's flag and take it back to the base!</objective>
 <authors>
     <author uuid="5eed208d-de58-4022-9ba7-6ccb5ea7e92a" contribution="Map planning, XML"/>
@@ -63,13 +63,15 @@
 </kits>
 <flags flag-proximity-metric="closest player">
     <flag id="gray-flag" name="Gray Flag" owner="gray-team" pickup-kit="flag-kit" drop-kit="reset">
-        <post id="gray-post" recover-time="10s" respawn-time="7s" pickup-filter="green">0.5,8,-34.5</post>
+        <post recover-time="10s" respawn-time="7s" pickup-filter="green">0.5,8,-34.5</post>
     </flag>
     <flag id="green-flag" name="Green Flag" owner="gray-team" pickup-kit="flag-kit" drop-kit="reset">
-        <post id="green-post" recover-time="10s" respawn-time="7s" pickup-filter="gray">0.5,8,35.5</post>
+        <post recover-time="10s" respawn-time="7s" pickup-filter="gray">0.5,8,35.5</post>
     </flag>
-    <net post="gray-post" points="1" region="green-net" capture-filter="green"/>
-    <net post="green-post" points="1" region="gray-net" capture-filter="gray"/>
+    <flags points="1">
+        <net region="green-net" flag="gray-flag"/>
+        <net region="gray-net" flag="green-flag""/>
+    </flags>
 </flags>
 <regions>
     <apply block="never" region="everywhere"/>
@@ -88,6 +90,10 @@
         </region>
     </apply>
 </regions>
+<killreward>
+    <item>golden apple</item>
+    <item amount="8">arrow</item>
+</killreward>
 <itemremove>
     <item>arrow</item> 
     <item>iron leggings</item>
@@ -98,4 +104,4 @@
     <team id="green">green-team</team>
     <team id="gray">gray-team</team>
 </filters>
-</map>
+</map>	
