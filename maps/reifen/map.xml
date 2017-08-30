@@ -7,7 +7,6 @@
     <author uuid="f926e3b1-ce9c-4269-a5e8-e339d5056480" contribution="Map planning, Building"/>
 </authors>
 <gamemode>ctf</gamemode>
-<gamemode>scorebox</gamemode>
 <score>
     <limit>3</limit>
     <kills>0</kills>
@@ -64,7 +63,7 @@
     </kit>
 </kits>
 <flags flag-proximity-metric="closest player">
-    <flag id="gray-flag" name="Gray Flag" owner="gray-team" pickup-kit="flag-kit" drop-kit="reset">
+    <flag id="gray-flag" name="Gray Flag" owner="green-team" pickup-kit="flag-kit" drop-kit="reset">
         <post recover-time="10s" respawn-time="7s" pickup-filter="green">0.5,8,-34.5</post>
     </flag>
     <flag id="green-flag" name="Green Flag" owner="gray-team" pickup-kit="flag-kit" drop-kit="reset">
