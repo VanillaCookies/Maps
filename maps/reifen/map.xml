@@ -63,10 +63,10 @@
     </kit>
 </kits>
 <flags flag-proximity-metric="closest player">
-    <flag id="gray-flag" name="Gray Flag" owner="green-team" pickup-kit="flag-kit" drop-kit="reset">
+    <flag id="gray-flag" name="Gray Flag" owner="gray-team" pickup-kit="flag-kit" drop-kit="reset">
         <post recover-time="10s" respawn-time="7s" pickup-filter="green">0.5,8,-34.5</post>
     </flag>
-    <flag id="green-flag" name="Green Flag" owner="gray-team" pickup-kit="flag-kit" drop-kit="reset">
+    <flag id="green-flag" name="Green Flag" owner="green-team" pickup-kit="flag-kit" drop-kit="reset">
         <post recover-time="10s" respawn-time="7s" pickup-filter="gray">0.5,8,35.5</post>
     </flag>
     <flags points="1">
