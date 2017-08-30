@@ -1,12 +1,16 @@
 <map proto="1.4.0">
 <name>Reifen</name>
-<version>1.0.5</version>
+<version>1.1.0</version>
 <objective>Get the enemy's flag and take it back to the base!</objective>
 <authors>
     <author uuid="5eed208d-de58-4022-9ba7-6ccb5ea7e92a" contribution="Map planning, XML"/>
     <author uuid="f926e3b1-ce9c-4269-a5e8-e339d5056480" contribution="Map planning, Building"/>
 </authors>
+<contributors>
+    <contributor uuid="0d6cbe3e-8fb2-4eb9-a751-0d2e76556c6a" contribution="Adapt XML to work with Cardinal"/>
+</contributors>
 <gamemode>ctf</gamemode>
+<edition>tournament</edition>
 <score>
     <limit>3</limit>
     <kills>0</kills>
@@ -100,7 +104,14 @@
     <item>iron leggings</item>
     <item>bow</item>
     <item>stone sword</item>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>leather boots</item>
 </itemremove>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+</toolrepair>
 <filters>
     <team id="green">green-team</team>
     <team id="gray">gray-team</team>
